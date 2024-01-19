@@ -2,6 +2,7 @@ import openpyxl
 import tkinter as tk
 from tkinter import messagebox
 from tkinter import ttk
+import os
 
 def search_excel(filename, word):
     workbook = openpyxl.load_workbook(filename)
@@ -59,7 +60,9 @@ def search_button_click():
     else:
         messagebox.showinfo("No Matches", "No matches found.")
 
-filename = 'PPAS Tables.xlsx'  # Replace with your file's name
+#filename = 'data/PPAS Tables.xlsx'  # Replace with your file's name
+filename = filename = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data', 'PPAS Tables.xlsx')
+
 
 # Create the main window
 root = tk.Tk()
