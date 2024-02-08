@@ -61,7 +61,7 @@ def search_button_click():
         messagebox.showinfo("No Matches", "No matches found.")
 
 #filename = 'data/PPAS Tables.xlsx'
-filename = filename = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data', 'PPAS Tables.xlsx')
+filename = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data', 'PPAS Tables.xlsx')
 
 
 # Create the main window
