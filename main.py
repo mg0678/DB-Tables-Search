@@ -12,12 +12,12 @@ def search_excel(filename, word):
     
     columns_found = False
     for row in sheet.iter_rows(min_row=2, values_only=True):
-        if columns_found:
-            results.append((row[0], row[2]))
-        elif row[0] == "-------- columns --------":
-            columns_found = True
-        elif word.lower() in str(row[2]).lower():
-            results.append((row[0], row[2]))
+        if not columns_found:
+            if "table" in str(row[0]).lower():
+                columns_found = True
+        else:
+            if word.lower() in str(row[0]).lower() or word.lower() in str(row[2]).lower():
+                results.append((row[0], row[2]))
     
     return results
 
@@ -60,7 +60,7 @@ def search_button_click():
     else:
         messagebox.showinfo("No Matches", "No matches found.")
 
-#filename = 'data/PPAS Tables.xlsx'  # Replace with your file's name
+#filename = 'data/PPAS Tables.xlsx'
 filename = filename = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data', 'PPAS Tables.xlsx')
 
 
