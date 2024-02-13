@@ -47,14 +47,16 @@ def search_button_click():
             columns_data_lower = columns_data.lower()
             word_lower = word.lower()
             word_start = columns_data_lower.find(word_lower)
-            if word_start != -1:
+            while word_start != -1:
                 result_text.insert(tk.END, columns_data[:word_start], "columns")
                 result_text.insert(tk.END, columns_data[word_start:word_start+len(word)], "bold")  # Highlighted word
-                result_text.insert(tk.END, columns_data[word_start+len(word):], "columns")
-            else:
-                result_text.insert(tk.END, columns_data, "columns")
+                columns_data = columns_data[word_start+len(word):]
+                columns_data_lower = columns_data.lower()
+                word_start = columns_data_lower.find(word_lower)
+            result_text.insert(tk.END, columns_data, "columns")
+
             
-            result_text.insert(tk.END, "\n\n")
+            
             
         result_text.config(state=tk.DISABLED)
     else:
