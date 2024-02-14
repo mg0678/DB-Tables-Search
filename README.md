@@ -6,4 +6,4 @@ Example: Search for all references of Personid:
 - All instances of the searched term will be highlighted in the results
 
 Wildcards are not supported at this time
-- using "p" as a search term would currently return every table and column that contains "p", no matter where is exists in the name
+- using "p" as a search term would currently return every table and column that contains "p", no matter where it exists in the name
