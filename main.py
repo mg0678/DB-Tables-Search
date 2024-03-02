@@ -11,13 +11,15 @@ def search_excel(filename, word):
     results = []
     
     columns_found = False
-    for row in sheet.iter_rows(min_row=2, values_only=True):
+    for row in sheet.iter_rows(values_only=True):
         if not columns_found:
             if "table" in str(row[0]).lower():
                 columns_found = True
         else:
-            if word.lower() in str(row[0]).lower() or word.lower() in str(row[2]).lower():
-                results.append((row[0], row[2]))
+            table_name = row[0].strip() if row[0] else ""  
+            description = row[2].strip() if row[2] else ""  
+            if word.lower() in table_name.lower() or word.lower() in description.lower():
+                results.append((table_name, description))
     
     return results
 
@@ -53,18 +55,13 @@ def search_button_click():
                 columns_data = columns_data[word_start+len(word):]
                 columns_data_lower = columns_data.lower()
                 word_start = columns_data_lower.find(word_lower)
-            result_text.insert(tk.END, columns_data, "columns")
-
-            
-            
-            
+            result_text.insert(tk.END, columns_data, "columns")                            
         result_text.config(state=tk.DISABLED)
     else:
         messagebox.showinfo("No Matches", "No matches found.")
 
 #filename = 'data/PPAS Tables.xlsx'
 filename = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data', 'PPAS Tables.xlsx')
-
 
 # Create the main window
 root = tk.Tk()
