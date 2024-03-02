@@ -7,3 +7,5 @@ Example: Search for all references of Personid:
 
 Wildcards are not supported at this time
 - using "p" as a search term would currently return every table and column that contains "p", no matter where it exists in the name
+
+![Search Screen](https://imgur.com/a/hNGBxBO)
