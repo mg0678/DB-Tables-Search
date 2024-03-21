@@ -77,6 +77,9 @@ entry.pack()
 search_button = tk.Button(root, text="Search", command=search_button_click)
 search_button.pack()
 
+version = tk.Label(root, text="v1.3.0")
+version.pack()
+
 # Create a scrolled text widget with horizontal and vertical scrollbars
 scrollbar_y = ttk.Scrollbar(root, orient=tk.VERTICAL)
 scrollbar_x = ttk.Scrollbar(root, orient=tk.HORIZONTAL)
